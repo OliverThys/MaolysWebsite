@@ -35,13 +35,6 @@ export function ParticleBackground({
     const canvas = canvasRef.current;
     if (!canvas) return;
     
-    // DÉSACTIVER COMPLÈTEMENT SUR MOBILE pour éviter les clignotements
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) {
-      canvas.style.display = 'none';
-      return;
-    }
-    
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
@@ -49,7 +42,9 @@ export function ParticleBackground({
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    // Détecter mobile et optimiser en conséquence
+    const isMobile = window.innerWidth < 768;
+    const dpr = isMobile ? 1 : Math.max(1, Math.min(2, window.devicePixelRatio || 1));
 
     let width = 0;
     let height = 0;
@@ -89,17 +84,20 @@ export function ParticleBackground({
     const resize = () => {
       const vw = window.innerWidth;
       const vh = window.innerHeight;
+      const currentIsMobile = vw < 768;
       width = vw;
       height = vh;
-      canvas.width = Math.floor(vw * dpr);
-      canvas.height = Math.floor(vh * dpr);
+      canvas.width = Math.floor(vw * (currentIsMobile ? 1 : dpr));
+      canvas.height = Math.floor(vh * (currentIsMobile ? 1 : dpr));
       canvas.style.width = `${vw}px`;
       canvas.style.height = `${vh}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.setTransform(currentIsMobile ? 1 : dpr, 0, 0, currentIsMobile ? 1 : dpr, 0, 0);
 
-      // Désactivé sur mobile (déjà géré au début)
+      // Réduire drastiquement sur mobile pour éviter les clignotements
       const targetCount = prefersReducedMotion
         ? 0
+        : currentIsMobile
+        ? Math.min(40, Math.floor(vw * vh * density * 0.15)) // 85% de réduction sur mobile, max 40 particules
         : Math.min(220, Math.max(40, Math.floor(vw * vh * density)));
 
       // Initialize or adjust particle array
@@ -138,8 +136,9 @@ export function ParticleBackground({
     let lastTime = performance.now();
 
     const update = (dt: number) => {
+      const currentIsMobile = window.innerWidth < 768;
       // Move particles
-      const maxSpeed = speed; // px/s
+      const maxSpeed = currentIsMobile ? speed * 0.6 : speed; // Réduire vitesse sur mobile
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         p.position.x += p.velocity.x * maxSpeed * dt;
@@ -152,15 +151,18 @@ export function ParticleBackground({
         if (p.position.y >= height) p.position.y -= height;
       }
 
-      // Rebuild grid (fast)
-      buildGrid();
+      // Rebuild grid moins fréquemment sur mobile
+      if (!currentIsMobile || Math.random() > 0.7) {
+        buildGrid();
+      }
     };
 
     const draw = () => {
+      const currentIsMobile = window.innerWidth < 768;
       ctx.clearRect(0, 0, width, height);
 
       // Batch draw particles
-      ctx.fillStyle = `rgba(${color}, 0.55)`;
+      ctx.fillStyle = `rgba(${color}, ${currentIsMobile ? 0.4 : 0.55})`;
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         ctx.beginPath();
@@ -168,26 +170,33 @@ export function ParticleBackground({
         ctx.fill();
       }
 
-      // Connections using spatial hashing
-      ctx.lineWidth = 1;
+      // Connections using spatial hashing - réduites sur mobile
+      ctx.lineWidth = currentIsMobile ? 0.5 : 1;
       ctx.lineCap = "round";
+      const connectionThreshold = currentIsMobile ? maxConnectionDistance * 0.7 : maxConnectionDistance;
+      const maxConnectionsPerParticle = currentIsMobile ? 2 : Infinity;
+      
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         const neighbors = queryNeighbors(p);
-        for (let k = 0; k < neighbors.length; k++) {
+        let connectionCount = 0;
+        for (let k = 0; k < neighbors.length && connectionCount < maxConnectionsPerParticle; k++) {
           const j = neighbors[k];
           if (j <= i) continue; // avoid duplicates
           const q = particles[j];
           const dx = p.position.x - q.position.x;
           const dy = p.position.y - q.position.y;
           const dist = Math.hypot(dx, dy);
-          if (dist < maxConnectionDistance) {
-            const alpha = 0.18 * (1 - dist / maxConnectionDistance);
+          if (dist < connectionThreshold) {
+            const alpha = currentIsMobile 
+              ? 0.12 * (1 - dist / connectionThreshold) // Plus faible sur mobile
+              : 0.18 * (1 - dist / maxConnectionDistance);
             ctx.strokeStyle = `rgba(${color}, ${alpha.toFixed(3)})`;
             ctx.beginPath();
             ctx.moveTo(p.position.x, p.position.y);
             ctx.lineTo(q.position.x, q.position.y);
             ctx.stroke();
+            connectionCount++;
           }
         }
       }
