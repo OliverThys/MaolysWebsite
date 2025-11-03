@@ -105,7 +105,7 @@ export function ProjectsSection() {
                   <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                     <button
                       onClick={() => openGallery(project.id, 0)}
-                      className="block h-64 lg:h-96 w-full relative group/gallery"
+                      className="block h-56 sm:h-64 lg:h-96 w-full relative group/gallery touch-manipulation"
                     >
                       <div className="relative h-full">
                         {/* Image principale */}
@@ -151,10 +151,10 @@ export function ProjectsSection() {
                       <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-3">
                         {project.category}
                       </span>
-                      <h3 className="text-3xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      <h3 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-muted-foreground leading-relaxed">
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                         {project.description}
                       </p>
                     </div>

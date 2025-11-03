@@ -102,3 +102,20 @@ a {
 img {
   image-rendering: -webkit-optimize-contrast;
 }
+
+/* Optimisation tactile */
+button, a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Amélioration de la lisibilité sur mobile */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px; /* Prévenir le zoom automatique sur iOS */
+  }
+  
+  input, textarea, select {
+    font-size: 16px; /* Prévenir le zoom automatique sur iOS */
+  }
+}

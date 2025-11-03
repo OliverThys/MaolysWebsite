@@ -71,7 +71,7 @@ const itemVariants = {
 
 export function ServicesSection() {
   return (
-    <section className="py-24 lg:py-32 relative">
+    <section className="py-16 sm:py-20 lg:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0 }}
@@ -80,13 +80,13 @@ export function ServicesSection() {
           transition={{ duration: 0.3 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-display font-bold mb-3 sm:mb-4 px-2 sm:px-0">
             Solutions sur Mesure{" "}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               pour Chaque Défi
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
             De l'IA conversationnelle à l'automatisation complète, nous créons
             des solutions qui s'adaptent à vos besoins métier.
           </p>
@@ -113,7 +113,7 @@ export function ServicesSection() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ type: "tween", duration: 0.2 }}
                     style={{ willChange: 'transform' }}
-                    className={`group relative p-8 lg:p-10 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all overflow-hidden ${
+                    className={`group relative p-6 sm:p-8 lg:p-10 rounded-xl sm:rounded-2xl bg-card border border-border hover:border-primary/50 transition-all overflow-hidden touch-manipulation ${
                       isLarge ? "lg:h-full" : "h-full"
                     }`}
                   >
@@ -121,13 +121,13 @@ export function ServicesSection() {
                       className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity`}
                     />
                     <div className="relative z-10">
-                      <div className="inline-flex p-3 rounded-xl bg-primary/10 mb-6 group-hover:bg-primary/20 transition-colors">
-                        <Icon className="h-6 w-6 text-primary" />
+                      <div className="inline-flex p-2 sm:p-3 rounded-xl bg-primary/10 mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors">
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                       </div>
-                      <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                      <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                         {service.description}
                       </p>
                       <div className="flex items-center text-primary font-medium group-hover:gap-2 transition-all">

@@ -102,7 +102,7 @@ export function TrustSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.3 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16"
         >
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -116,13 +116,13 @@ export function TrustSection() {
                 className="text-center"
                 style={{ willChange: 'opacity' }}
               >
-                <div className="inline-flex p-3 rounded-xl bg-primary/10 mb-4">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="inline-flex p-2 sm:p-3 rounded-xl bg-primary/10 mb-2 sm:mb-4">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
-                <div className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
             );
           })}
@@ -140,7 +140,7 @@ export function TrustSection() {
             Technologies{" "}
             <span className="text-primary">Maîtrisées</span>
           </h3>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 lg:gap-4">
             {technologies.map((tech, index) => (
               <motion.div
                 key={tech}
@@ -149,7 +149,7 @@ export function TrustSection() {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "tween", duration: 0.15, delay: index * 0.02 }}
-                className="px-4 py-2 rounded-lg bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all text-xs sm:text-sm"
                 style={{ willChange: 'transform' }}
               >
                 <span className="text-sm font-medium">{tech}</span>

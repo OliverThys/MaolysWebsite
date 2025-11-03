@@ -130,29 +130,29 @@ export function ProjectGallery({
             className="fixed inset-0 bg-black/95 backdrop-blur-md z-50"
           />
 
-          {/* Gallery Modal */}
+            {/* Gallery Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-4 sm:inset-8 lg:inset-16 z-50 flex flex-col"
+            className="fixed inset-2 sm:inset-4 lg:inset-8 xl:inset-16 z-50 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between mb-4">
-              <div className="text-foreground">
-                <h3 className="text-xl font-bold">{title}</h3>
-                <p className="text-sm text-muted-foreground">
+            <div className="flex items-center justify-between mb-2 sm:mb-4">
+              <div className="text-foreground flex-1 min-w-0 pr-2">
+                <h3 className="text-lg sm:text-xl font-bold truncate">{title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   {currentIndex + 1} / {images.length}
                 </p>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors"
+                className="p-2 sm:p-2.5 rounded-lg bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors touch-manipulation flex-shrink-0"
                 aria-label="Fermer"
               >
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 sm:h-6 sm:w-6" />
               </button>
             </div>
 
@@ -191,17 +191,17 @@ export function ProjectGallery({
                 <>
                   <button
                     onClick={goToPrevious}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:bg-background transition-all hover:scale-110 z-20"
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:bg-background active:scale-95 sm:hover:scale-110 transition-all z-20 touch-manipulation"
                     aria-label="Image précédente"
                   >
-                    <ChevronLeft className="h-6 w-6" />
+                    <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
                   </button>
                   <button
                     onClick={goToNext}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:bg-background transition-all hover:scale-110 z-20"
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border hover:bg-background active:scale-95 sm:hover:scale-110 transition-all z-20 touch-manipulation"
                     aria-label="Image suivante"
                   >
-                    <ChevronRight className="h-6 w-6" />
+                    <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
                   </button>
                 </>
               )}
@@ -209,15 +209,15 @@ export function ProjectGallery({
 
             {/* Thumbnails */}
             {images.length > 1 && (
-              <div className="flex items-center justify-center gap-3 mt-4 overflow-x-auto pb-2">
+              <div className="flex items-center justify-center gap-2 sm:gap-3 mt-2 sm:mt-4 overflow-x-auto pb-2 touch-pan-x">
                 {images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => goToImage(index)}
-                    className={`relative w-20 h-20 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
+                    className={`relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 touch-manipulation active:scale-95 ${
                       currentIndex === index
-                        ? "border-primary scale-110"
-                        : "border-border opacity-50 hover:opacity-100 hover:scale-105"
+                        ? "border-primary scale-105 sm:scale-110"
+                        : "border-border opacity-50 active:opacity-100 sm:hover:opacity-100 active:scale-100 sm:hover:scale-105"
                     }`}
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -234,8 +234,9 @@ export function ProjectGallery({
 
             {/* Keyboard Navigation Hint */}
             {images.length > 1 && (
-              <div className="text-center mt-4 text-xs text-muted-foreground">
-                <span>Utilisez ← → pour naviguer • ESC pour fermer</span>
+              <div className="text-center mt-2 sm:mt-4 text-xs text-muted-foreground px-2">
+                <span className="hidden sm:inline">Utilisez ← → pour naviguer • ESC pour fermer</span>
+                <span className="sm:hidden">Swipez pour naviguer</span>
               </div>
             )}
           </motion.div>

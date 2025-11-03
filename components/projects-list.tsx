@@ -132,51 +132,51 @@ export function ProjectsList() {
           transition={{ duration: 0.3, delay: index * 0.05 }}
           style={{ willChange: 'opacity' }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center group">
-            <div className={`relative h-64 lg:h-96 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center group">
+            <div className={`relative h-56 sm:h-64 lg:h-96 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
               {project.isResponsive ? (
                 // Layout spécial pour RBBC : PC + Mobile côte à côte
-                <div className="relative h-full flex items-center justify-center gap-4">
+                <div className="relative h-full flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                   <button
                     onClick={() => openGallery(project.id, 0)}
-                    className="flex-1 h-full relative group/gallery"
+                    className="flex-1 sm:flex-1 h-48 sm:h-full relative group/gallery w-full sm:w-auto"
                   >
-                    <div className="relative h-full rounded-2xl overflow-hidden border border-border bg-muted/30 group-hover:border-primary/50 transition-all cursor-pointer">
+                    <div className="relative h-full rounded-xl sm:rounded-2xl overflow-hidden border border-border bg-muted/30 group-hover:border-primary/50 transition-all cursor-pointer touch-manipulation">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover/gallery:opacity-100 transition-opacity z-10" />
                       <Image
                         src={project.images[0]}
                         alt={`Screenshot desktop de ${project.title}`}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 1024px) 50vw, 25vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
                       <div className="absolute top-2 right-2 px-2 py-1 bg-background/80 backdrop-blur-sm rounded text-xs font-medium text-muted-foreground border border-border flex items-center gap-1.5">
                         <MonitorIcon className="h-3 w-3" />
-                        <span>Desktop</span>
+                        <span className="hidden sm:inline">Desktop</span>
                       </div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/gallery:opacity-100 transition-opacity bg-black/20 z-20">
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-active/gallery:opacity-100 sm:group-hover/gallery:opacity-100 transition-opacity bg-black/20 z-20">
                         <motion.div
                           initial={{ scale: 0.8 }}
                           whileHover={{ scale: 1.1 }}
-                          className="p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border shadow-lg"
+                          className="p-2 sm:p-3 rounded-full bg-background/90 backdrop-blur-sm border border-border shadow-lg"
                         >
-                          <Maximize2 className="h-6 w-6" />
+                          <Maximize2 className="h-4 w-4 sm:h-6 sm:w-6" />
                         </motion.div>
                       </div>
                     </div>
                   </button>
                   <button
                     onClick={() => openGallery(project.id, 1)}
-                    className="h-4/5 w-32 flex-shrink-0 relative group/gallery"
+                    className="h-32 sm:h-4/5 w-full sm:w-32 flex-shrink-0 relative group/gallery"
                   >
-                    <div className="relative h-full rounded-xl overflow-hidden border border-border bg-muted/30 group-hover:border-primary/50 transition-all cursor-pointer">
+                    <div className="relative h-full rounded-xl overflow-hidden border border-border bg-muted/30 group-hover:border-primary/50 transition-all cursor-pointer touch-manipulation">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover/gallery:opacity-100 transition-opacity z-10" />
                       <Image
-                        src={project.images[0]}
+                        src={project.images[1] || project.images[0]}
                         alt={`Screenshot mobile de ${project.title}`}
                         fill
                         className="object-cover"
-                        sizes="128px"
+                        sizes="(max-width: 640px) 100vw, 128px"
                         onError={(e) => {
                           // Si l'image mobile n'existe pas, utiliser la desktop
                           const target = e.target as HTMLImageElement;
@@ -187,9 +187,9 @@ export function ProjectsList() {
                       />
                       <div className="absolute top-2 right-2 px-2 py-1 bg-background/80 backdrop-blur-sm rounded text-xs font-medium text-muted-foreground border border-border flex items-center gap-1.5">
                         <SmartphoneIcon className="h-3 w-3" />
-                        <span>Mobile</span>
+                        <span className="hidden sm:inline">Mobile</span>
                       </div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/gallery:opacity-100 transition-opacity bg-black/20 z-20">
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-active/gallery:opacity-100 sm:group-hover/gallery:opacity-100 transition-opacity bg-black/20 z-20">
                         <motion.div
                           initial={{ scale: 0.8 }}
                           whileHover={{ scale: 1.1 }}
@@ -200,8 +200,8 @@ export function ProjectsList() {
                       </div>
                     </div>
                   </button>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs font-medium text-primary backdrop-blur-sm">
-                    ✨ Responsive Design
+                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 sm:px-3 py-0.5 sm:py-1 bg-primary/10 border border-primary/20 rounded-full text-xs font-medium text-primary backdrop-blur-sm whitespace-nowrap">
+                    ✨ Responsive
                   </div>
                 </div>
               ) : (
@@ -261,25 +261,25 @@ export function ProjectsList() {
                     </span>
                   )}
                 </div>
-                <h2 className="text-3xl font-bold mb-3 group-hover:text-primary transition-colors">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                   {project.title}
                 </h2>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
               {project.metrics && (
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4">
                   {project.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="p-4 rounded-lg bg-card border border-border"
+                      className="p-3 sm:p-4 rounded-lg bg-card border border-border"
                     >
-                      <div className="text-2xl font-bold text-primary mb-1">
+                      <div className="text-xl sm:text-2xl font-bold text-primary mb-1">
                         {metric.value}
                       </div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-xs text-muted-foreground line-clamp-2">
                         {metric.label}
                       </div>
                     </div>

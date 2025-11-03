@@ -67,7 +67,7 @@ export function ProcessSection() {
           {/* Timeline Line - Desktop */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-primary/50 to-primary transform -translate-y-1/2" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-4">
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -80,21 +80,21 @@ export function ProcessSection() {
                   className="relative"
                   style={{ willChange: 'opacity' }}
                 >
-                  <div className="relative z-10 bg-card border border-border rounded-2xl p-6 lg:p-8 h-full hover:border-primary/50 transition-all group">
-                    <div className="flex flex-col lg:items-center lg:text-center space-y-4">
+                  <div className="relative z-10 bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 h-full hover:border-primary/50 transition-all group">
+                    <div className="flex flex-col lg:items-center lg:text-center space-y-3 sm:space-y-4">
                       {/* Icon with gradient background */}
-                      <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${step.color} shadow-lg`}>
-                        <Icon className="h-6 w-6 text-white" />
+                      <div className={`inline-flex p-3 sm:p-4 rounded-xl bg-gradient-to-br ${step.color} shadow-lg`}>
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
 
                       {/* Step Number */}
-                      <div className="text-6xl font-display font-bold text-muted/20 lg:absolute lg:top-4 lg:right-4">
+                      <div className="text-5xl sm:text-6xl font-display font-bold text-muted/20 lg:absolute lg:top-4 lg:right-4">
                         {step.number}
                       </div>
 
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-bold">{step.title}</h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
+                      <div className="space-y-1 sm:space-y-2">
+                        <h3 className="text-lg sm:text-xl font-bold">{step.title}</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                           {step.description}
                         </p>
                       </div>

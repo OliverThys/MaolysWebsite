@@ -79,10 +79,10 @@ export function ContactForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="bg-card border border-border rounded-2xl p-8 lg:p-12"
+      className="bg-card border border-border rounded-xl sm:rounded-2xl p-6 sm:p-8 lg:p-12"
     >
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
               Nom complet *
