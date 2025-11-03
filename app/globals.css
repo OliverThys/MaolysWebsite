@@ -86,11 +86,25 @@
   @apply bg-primary/50;
 }
 
-/* Optimisation des transitions */
+/* Optimisation des transitions - réduites sur mobile */
 * {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Réduire les transitions sur mobile pour éviter les clignotements */
+@media (max-width: 768px) {
+  * {
+    transition-duration: 100ms;
+  }
+  
+  /* Désactiver les transitions complexes sur mobile */
+  .group-hover\:opacity-100,
+  .group-hover\:scale-105,
+  .group-hover\:translate-x-1 {
+    transition: none;
+  }
 }
 
 /* Optimisation des liens */
@@ -113,9 +127,25 @@ button, a {
 @media (max-width: 640px) {
   body {
     font-size: 16px; /* Prévenir le zoom automatique sur iOS */
+    /* Prévenir les reflows et clignotements */
+    -webkit-font-feature-settings: "liga" off;
+    font-feature-settings: "liga" off;
   }
   
   input, textarea, select {
     font-size: 16px; /* Prévenir le zoom automatique sur iOS */
+  }
+  
+  /* Optimisations GPU pour mobile */
+  section, div[class*="container"] {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  /* Réduire les animations Framer Motion sur mobile */
+  [data-framer-motion] {
+    will-change: auto !important;
   }
 }

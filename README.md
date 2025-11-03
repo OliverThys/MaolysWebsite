@@ -73,5 +73,5 @@ vercel
 
 ## 📄 License
 
-© 2024 Maolys. Tous droits réservés.
+© 2025 Maolys. Tous droits réservés.
 

@@ -64,7 +64,8 @@ const itemVariants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.3,
+      duration: 0.2,
+      ease: "easeOut",
     },
   },
 };
@@ -77,8 +78,9 @@ export function ServicesSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
+          style={{ willChange: 'auto' }}
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-display font-bold mb-3 sm:mb-4 px-2 sm:px-0">
             Solutions sur Mesure{" "}
@@ -96,8 +98,9 @@ export function ServicesSection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6"
+          style={{ willChange: 'auto' }}
         >
           {services.map((service, index) => {
             const Icon = service.icon;

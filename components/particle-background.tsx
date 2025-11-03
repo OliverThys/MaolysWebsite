@@ -41,8 +41,9 @@ export function ParticleBackground({
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    // Device pixel ratio scaling for crisp rendering
-    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    // Réduire le DPR sur mobile pour améliorer les performances
+    const isMobile = window.innerWidth < 768;
+    const dpr = isMobile ? 1 : Math.max(1, Math.min(2, window.devicePixelRatio || 1));
 
     let width = 0;
     let height = 0;
@@ -90,9 +91,12 @@ export function ParticleBackground({
       canvas.style.height = `${vh}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Recompute particle count based on density (cap to avoid overload)
+      // Réduire drastiquement les particules sur mobile pour éviter les clignotements
+      const isMobile = vw < 768;
       const targetCount = prefersReducedMotion
         ? 0
+        : isMobile
+        ? Math.min(60, Math.floor(vw * vh * density * 0.3)) // 70% de réduction sur mobile
         : Math.min(220, Math.max(40, Math.floor(vw * vh * density)));
 
       // Initialize or adjust particle array

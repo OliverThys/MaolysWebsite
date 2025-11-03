@@ -14,8 +14,9 @@ export function CTASection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="max-w-3xl mx-auto text-center"
+          style={{ willChange: 'auto' }}
         >
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
             <Sparkles className="h-4 w-4 text-primary" />
