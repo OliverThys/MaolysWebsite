@@ -98,8 +98,9 @@ export function ServicesSection() {
 
         <motion.div
           variants={isMobile ? undefined : containerVariants}
-          initial={isMobile ? undefined : "hidden"}
+          initial={isMobile ? { opacity: 1 } : "hidden"}
           whileInView={isMobile ? undefined : "visible"}
+          animate={isMobile ? { opacity: 1 } : undefined}
           viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6"
         >
@@ -110,8 +111,8 @@ export function ServicesSection() {
               <motion.div
                 key={service.title}
                 variants={isMobile ? undefined : itemVariants}
-                initial={isMobile ? undefined : "hidden"}
-                animate={isMobile ? undefined : "visible"}
+                initial={isMobile ? { opacity: 1 } : "hidden"}
+                animate={isMobile ? { opacity: 1 } : "visible"}
                 className={isLarge ? "md:col-span-2 lg:col-span-1" : ""}
               >
                 <Link href={service.href}>

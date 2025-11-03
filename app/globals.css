@@ -164,7 +164,13 @@ button, a {
   }
   
   /* Forcer l'opacité à 1 pour éviter les clignotements */
-  [data-framer-component] {
+  [data-framer-component],
+  [data-framer-name] {
+    opacity: 1 !important;
+  }
+  
+  /* S'assurer que tous les motion.div sont visibles */
+  div[style*="opacity"] {
     opacity: 1 !important;
   }
 }
