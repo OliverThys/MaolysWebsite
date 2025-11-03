@@ -51,19 +51,20 @@ const technologies = [
 function Counter({ value, suffix }: { value: string; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-
+  
   // Extract number and unit from value
   const match = value.match(/(\d+(?:\.\d+)?)([KM%]*)/);
-  if (!match) return <span>{value}</span>;
-
-  const numStr = match[1];
-  const unit = match[2];
+  const numStr = match ? match[1] : "0";
+  const unit = match ? match[2] : "";
   const num = parseFloat(numStr);
 
   const [displayValue, setDisplayValue] = React.useState(0);
 
   React.useEffect(() => {
-    if (!isInView) return;
+    if (!match || !isInView) {
+      setDisplayValue(0);
+      return;
+    }
 
     const duration = 2000;
     const steps = 60;
@@ -83,6 +84,10 @@ function Counter({ value, suffix }: { value: string; suffix: string }) {
 
     return () => clearInterval(timer);
   }, [isInView, num]);
+
+  if (!match) {
+    return <span>{value}</span>;
+  }
 
   return (
     <span ref={ref}>

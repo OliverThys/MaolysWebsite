@@ -72,6 +72,7 @@ const projects = [
     description:
       "Système intelligent de prise de rendez-vous avec optimisation automatique des créneaux via IA conversationnelle multi-canal (WhatsApp, SMS, appels).",
     image: "/projects/helloluna.jpg",
+    images: ["/projects/helloluna.jpg", "/projects/helloluna-main.jpg"],
     metrics: [
       { label: "Canaux supportés", value: "3" },
       { label: "Réservations/jour", value: "200+" },
@@ -84,8 +85,6 @@ const projects = [
       "Confirmation automatique",
     ],
     href: "/projets/helloluna",
-    image: "/projects/helloluna.jpg",
-    images: ["/projects/helloluna.jpg", "/projects/helloluna-main.jpg"],
     featured: false,
     isSideProject: true,
   },
@@ -177,13 +176,6 @@ export function ProjectsList() {
                         fill
                         className="object-cover"
                         sizes="(max-width: 640px) 100vw, 128px"
-                        onError={(e) => {
-                          // Si l'image mobile n'existe pas, utiliser la desktop
-                          const target = e.target as HTMLImageElement;
-                          if (target.src !== project.images[0]) {
-                            target.src = project.images[0];
-                          }
-                        }}
                       />
                       <div className="absolute top-2 right-2 px-2 py-1 bg-background/80 backdrop-blur-sm rounded text-xs font-medium text-muted-foreground border border-border flex items-center gap-1.5">
                         <SmartphoneIcon className="h-3 w-3" />

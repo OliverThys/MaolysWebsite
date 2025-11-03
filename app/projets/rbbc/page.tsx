@@ -66,13 +66,6 @@ export default function RBBCPage() {
                     fill
                     className="object-cover"
                     sizes="192px"
-                    onError={(e) => {
-                      // Fallback vers le screenshot principal si mobile n'existe pas
-                      const target = e.target as HTMLImageElement;
-                      if (target.src !== "/projects/rbbc.jpg") {
-                        target.src = "/projects/rbbc.jpg";
-                      }
-                    }}
                   />
                   <div className="absolute top-3 right-2 px-2 py-1 bg-background/90 backdrop-blur-sm rounded text-xs font-medium text-foreground border border-border shadow-lg flex items-center gap-1.5">
                     <SmartphoneIcon className="h-3.5 w-3.5" />
