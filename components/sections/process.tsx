@@ -8,6 +8,7 @@ import {
   Rocket,
   ArrowRight,
 } from "lucide-react";
+import { useIsMobile } from "@/lib/mobile-detection";
 
 const steps = [
   {
@@ -41,16 +42,17 @@ const steps = [
 ];
 
 export function ProcessSection() {
+  const isMobile = useIsMobile();
+  
   return (
     <section className="py-24 lg:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
-          style={{ willChange: 'auto' }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             Notre Processus{" "}
@@ -74,12 +76,11 @@ export function ProcessSection() {
               return (
                 <motion.div
                   key={step.number}
-                  initial={{ opacity: 0 }}
+                  initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, margin: "-30px" }}
-                  transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
+                  viewport={{ once: true, margin: isMobile ? "0px" : "-30px" }}
+                  transition={isMobile ? { duration: 0 } : { duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
                   className="relative"
-                  style={{ willChange: 'auto' }}
                 >
                   <div className="relative z-10 bg-card border border-border rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 h-full hover:border-primary/50 transition-all group">
                     <div className="flex flex-col lg:items-center lg:text-center space-y-3 sm:space-y-4">

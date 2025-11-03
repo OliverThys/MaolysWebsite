@@ -34,6 +34,14 @@ export function ParticleBackground({
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    
+    // DÉSACTIVER COMPLÈTEMENT SUR MOBILE pour éviter les clignotements
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      canvas.style.display = 'none';
+      return;
+    }
+    
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
@@ -41,9 +49,7 @@ export function ParticleBackground({
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    // Réduire le DPR sur mobile pour améliorer les performances
-    const isMobile = window.innerWidth < 768;
-    const dpr = isMobile ? 1 : Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
 
     let width = 0;
     let height = 0;
@@ -91,12 +97,9 @@ export function ParticleBackground({
       canvas.style.height = `${vh}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Réduire drastiquement les particules sur mobile pour éviter les clignotements
-      const isMobile = vw < 768;
+      // Désactivé sur mobile (déjà géré au début)
       const targetCount = prefersReducedMotion
         ? 0
-        : isMobile
-        ? Math.min(60, Math.floor(vw * vh * density * 0.3)) // 70% de réduction sur mobile
         : Math.min(220, Math.max(40, Math.floor(vw * vh * density)));
 
       // Initialize or adjust particle array

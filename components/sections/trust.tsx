@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code2, Users, Rocket, Award } from "lucide-react";
+import { useIsMobile } from "@/lib/mobile-detection";
 
 const stats = [
   {
@@ -98,29 +99,29 @@ function Counter({ value, suffix }: { value: string; suffix: string }) {
 }
 
 export function TrustSection() {
+  const isMobile = useIsMobile();
+  
   return (
     <section className="py-24 lg:py-32 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Stats */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-30px" }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-30px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }}
           className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16"
-          style={{ willChange: 'auto' }}
         >
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0 }}
+                initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.15, delay: index * 0.02, ease: "easeOut" }}
+                transition={isMobile ? { duration: 0 } : { duration: 0.15, delay: index * 0.02, ease: "easeOut" }}
                 className="text-center"
-                style={{ willChange: 'auto' }}
               >
                 <div className="inline-flex p-2 sm:p-3 rounded-xl bg-primary/10 mb-2 sm:mb-4">
                   <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
@@ -136,12 +137,11 @@ export function TrustSection() {
 
         {/* Technologies */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-30px" }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-30px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }}
           className="text-center"
-          style={{ willChange: 'auto' }}
         >
           <h3 className="text-2xl font-bold mb-8">
             Technologies{" "}
@@ -151,13 +151,12 @@ export function TrustSection() {
             {technologies.map((tech, index) => (
               <motion.div
                 key={tech}
-                initial={{ opacity: 0 }}
+                initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "tween", duration: 0.1, delay: index * 0.01, ease: "easeOut" }}
+                whileHover={isMobile ? undefined : { scale: 1.05 }}
+                transition={isMobile ? { duration: 0 } : { type: "tween", duration: 0.1, delay: index * 0.01, ease: "easeOut" }}
                 className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-card border border-border hover:border-primary/50 hover:bg-primary/5 transition-all text-xs sm:text-sm"
-                style={{ willChange: 'auto' }}
               >
                 <span className="text-sm font-medium">{tech}</span>
               </motion.div>

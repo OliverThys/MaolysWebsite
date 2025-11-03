@@ -9,6 +9,7 @@ import {
   GraduationCap,
   ArrowRight,
 } from "lucide-react";
+import { useIsMobile } from "@/lib/mobile-detection";
 
 const services = [
   {
@@ -71,16 +72,17 @@ const itemVariants = {
 };
 
 export function ServicesSection() {
+  const isMobile = useIsMobile();
+  
   return (
     <section className="py-16 sm:py-20 lg:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
-          style={{ willChange: 'auto' }}
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-display font-bold mb-3 sm:mb-4 px-2 sm:px-0">
             Solutions sur Mesure{" "}
@@ -95,12 +97,11 @@ export function ServicesSection() {
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          variants={isMobile ? undefined : containerVariants}
+          initial={isMobile ? undefined : "hidden"}
+          whileInView={isMobile ? undefined : "visible"}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6"
-          style={{ willChange: 'auto' }}
         >
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -108,14 +109,15 @@ export function ServicesSection() {
             return (
               <motion.div
                 key={service.title}
-                variants={itemVariants}
+                variants={isMobile ? undefined : itemVariants}
+                initial={isMobile ? undefined : "hidden"}
+                animate={isMobile ? undefined : "visible"}
                 className={isLarge ? "md:col-span-2 lg:col-span-1" : ""}
               >
                 <Link href={service.href}>
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "tween", duration: 0.2 }}
-                    style={{ willChange: 'transform' }}
+                    whileHover={isMobile ? undefined : { scale: 1.02 }}
+                    transition={isMobile ? undefined : { type: "tween", duration: 0.2 }}
                     className={`group relative p-6 sm:p-8 lg:p-10 rounded-xl sm:rounded-2xl bg-card border border-border hover:border-primary/50 transition-all overflow-hidden touch-manipulation ${
                       isLarge ? "lg:h-full" : "h-full"
                     }`}

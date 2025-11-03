@@ -7,6 +7,7 @@ import { ArrowRight, Maximize2 } from "lucide-react";
 import Image from "next/image";
 import { ProjectGallery } from "@/components/project-gallery";
 import { MonitorIcon, SmartphoneIcon } from "@/components/icons";
+import { useIsMobile } from "@/lib/mobile-detection";
 
 const projects = [
   {
@@ -107,6 +108,7 @@ const projects = [
 export function ProjectsList() {
   const [galleryOpen, setGalleryOpen] = useState<string | null>(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const isMobile = useIsMobile();
 
   const openGallery = (projectId: string, imageIndex: number = 0) => {
     setGalleryIndex(imageIndex);
@@ -125,11 +127,10 @@ export function ProjectsList() {
         {projects.map((project, index) => (
         <motion.div
           key={project.id}
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
-          style={{ willChange: 'auto' }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center group">
             <div className={`relative h-56 sm:h-64 lg:h-96 ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>

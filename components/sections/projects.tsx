@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, Maximize2 } from "lucide-react";
 import Image from "next/image";
 import { ProjectGallery } from "@/components/project-gallery";
+import { useIsMobile } from "@/lib/mobile-detection";
 
 const projects = [
   {
@@ -53,6 +54,7 @@ const projects = [
 export function ProjectsSection() {
   const [galleryOpen, setGalleryOpen] = useState<string | null>(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  const isMobile = useIsMobile();
 
   const openGallery = (projectId: string, imageIndex: number = 0) => {
     setGalleryIndex(imageIndex);
@@ -69,12 +71,11 @@ export function ProjectsSection() {
     <section className="py-24 lg:py-32 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }}
           className="text-center mb-16"
-          style={{ willChange: 'auto' }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold mb-4">
             Des Résultats{" "}
@@ -92,11 +93,10 @@ export function ProjectsSection() {
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0 }}
+              initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
-              style={{ willChange: 'auto' }}
+              viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
+              transition={isMobile ? { duration: 0 } : { duration: 0.2, delay: index * 0.03, ease: "easeOut" }}
             >
               <div
                 className={`group grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${

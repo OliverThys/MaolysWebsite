@@ -3,20 +3,22 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useIsMobile } from "@/lib/mobile-detection";
 
 export function CTASection() {
+  const isMobile = useIsMobile();
+  
   return (
     <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
+          viewport={{ once: true, margin: isMobile ? "0px" : "-50px" }}
+          transition={isMobile ? { duration: 0 } : { duration: 0.2, ease: "easeOut" }}
           className="max-w-3xl mx-auto text-center"
-          style={{ willChange: 'auto' }}
         >
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
             <Sparkles className="h-4 w-4 text-primary" />

@@ -93,17 +93,28 @@
   transition-duration: 150ms;
 }
 
-/* Réduire les transitions sur mobile pour éviter les clignotements */
+/* DÉSACTIVER COMPLÈTEMENT LES TRANSITIONS SUR MOBILE */
 @media (max-width: 768px) {
   * {
-    transition-duration: 100ms;
+    transition: none !important;
+    animation: none !important;
   }
   
-  /* Désactiver les transitions complexes sur mobile */
+  /* Désactiver tous les effets hover sur mobile */
+  .group:hover *,
   .group-hover\:opacity-100,
   .group-hover\:scale-105,
-  .group-hover\:translate-x-1 {
-    transition: none;
+  .group-hover\:translate-x-1,
+  .hover\:bg-primary\/90,
+  .hover\:bg-muted,
+  .hover\:border-primary\/50 {
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Désactiver les animations Framer Motion */
+  [data-framer-component] {
+    animation: none !important;
   }
 }
 
@@ -136,16 +147,24 @@ button, a {
     font-size: 16px; /* Prévenir le zoom automatique sur iOS */
   }
   
-  /* Optimisations GPU pour mobile */
+  /* Optimisations GPU pour mobile - SIMPLIFIÉES */
   section, div[class*="container"] {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    transform: none;
+    -webkit-transform: none;
+    will-change: auto !important;
   }
   
-  /* Réduire les animations Framer Motion sur mobile */
-  [data-framer-motion] {
+  /* DÉSACTIVER COMPLÈTEMENT FRAMER MOTION SUR MOBILE */
+  [data-framer-component],
+  [data-framer-motion],
+  [style*="will-change"] {
     will-change: auto !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  
+  /* Forcer l'opacité à 1 pour éviter les clignotements */
+  [data-framer-component] {
+    opacity: 1 !important;
   }
 }
