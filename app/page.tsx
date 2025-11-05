@@ -17,8 +17,8 @@ const allProjectImages = [
   "/projects/easyrecruit-main.jpg",
   "/projects/helloluna.jpg",
   "/projects/helloluna-main.jpg",
-  "/projects/rbbc.jpg",
-  // rbbc-mobile.jpg sera ajouté quand disponible
+  "/projects/rbbc.png",
+  "/projects/rbbc-mobile.jpg",
 ];
 
 export default function HomePage() {

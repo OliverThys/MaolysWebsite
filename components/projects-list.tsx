@@ -95,8 +95,8 @@ const projects = [
     category: "Projet Dev Classique - Site Vitrine",
     description:
       "Site vitrine moderne et responsive avec design Apple-style et animations fluides pour le club de basketball RBBC (Blaregnies).",
-    image: "/projects/rbbc.jpg",
-    images: ["/projects/rbbc.jpg", "/projects/rbbc-mobile.jpg"], // Desktop + Mobile
+    image: "/projects/rbbc.png",
+    images: ["/projects/rbbc.png", "/projects/rbbc-mobile.jpg"], // Desktop + Mobile
     technologies: ["HTML5", "CSS3", "JavaScript"],
     href: "/projets/rbbc",
     featured: false,

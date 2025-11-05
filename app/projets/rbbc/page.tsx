@@ -44,7 +44,7 @@ export default function RBBCPage() {
                 <div className="relative w-full lg:w-2/3 h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-border bg-muted/30 group">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                   <Image
-                    src="/projects/rbbc.jpg"
+                    src="/projects/rbbc.png"
                     alt="Screenshot desktop du site RBBC"
                     fill
                     className="object-cover"
