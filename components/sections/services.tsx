@@ -91,8 +91,9 @@ export function ServicesSection() {
             </span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
-            De l'IA conversationnelle à l'automatisation complète, nous créons
-            des solutions qui s'adaptent à vos besoins métier.
+            Chaque solution est développée sur mesure par notre équipe d'experts. 
+            De l'IA conversationnelle à l'automatisation complète, nous adaptons 
+            notre expertise à vos besoins uniques.
           </p>
         </motion.div>
 

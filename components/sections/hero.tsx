@@ -52,9 +52,9 @@ export function HeroSection() {
             transition={isMobile ? { duration: 0 } : { delay: 0.15, duration: 0.3, ease: "easeOut" }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
-            Nous développons des solutions IA sur mesure qui automatisent vos
-            processus, augmentent votre productivité et transforment votre
-            façon de travailler.
+            Startup technologique belge spécialisée dans le développement IA sur mesure. 
+            Nous construisons des solutions qui s'adaptent à vos besoins uniques, 
+            avec une équipe d'experts passionnés et une approche agile.
           </motion.p>
 
           <motion.div

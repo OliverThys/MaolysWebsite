@@ -9,27 +9,27 @@ import { useIsMobile } from "@/lib/mobile-detection";
 
 const stats = [
   {
-    icon: Rocket,
-    value: "4",
-    label: "Projets Réalisés",
+    icon: Users,
+    value: "Équipe",
+    label: "Experts Passionnés",
     suffix: "",
   },
   {
     icon: Code2,
-    value: "100K+",
-    label: "Lignes de Code",
-    suffix: "",
-  },
-  {
-    icon: Users,
-    value: "100%",
-    label: "Clients Satisfaits",
+    value: "Sur-Mesure",
+    label: "Solutions Personnalisées",
     suffix: "",
   },
   {
     icon: Award,
-    value: "1",
-    label: "Projet Phare IA",
+    value: "Excellence",
+    label: "Expertise Technique",
+    suffix: "",
+  },
+  {
+    icon: Rocket,
+    value: "Startup",
+    label: "Agilité & Innovation",
     suffix: "",
   },
 ];
@@ -55,14 +55,20 @@ function Counter({ value, suffix }: { value: string; suffix: string }) {
   
   // Extract number and unit from value
   const match = value.match(/(\d+(?:\.\d+)?)([KM%]*)/);
-  const numStr = match ? match[1] : "0";
-  const unit = match ? match[2] : "";
+  
+  // If it's not a number, just display the text
+  if (!match) {
+    return <span>{value}{suffix}</span>;
+  }
+
+  const numStr = match[1];
+  const unit = match[2];
   const num = parseFloat(numStr);
 
   const [displayValue, setDisplayValue] = React.useState(0);
 
   React.useEffect(() => {
-    if (!match || !isInView) {
+    if (!isInView) {
       setDisplayValue(0);
       return;
     }
@@ -85,10 +91,6 @@ function Counter({ value, suffix }: { value: string; suffix: string }) {
 
     return () => clearInterval(timer);
   }, [isInView, num]);
-
-  if (!match) {
-    return <span>{value}</span>;
-  }
 
   return (
     <span ref={ref}>

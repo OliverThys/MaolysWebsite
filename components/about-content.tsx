@@ -1,26 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Target, Heart, Code } from "lucide-react";
+import { MapPin, Target, Code, Users } from "lucide-react";
 
 const values = [
   {
-    icon: Target,
-    title: "Excellence Technique",
+    icon: Users,
+    title: "Équipe de Qualité",
     description:
-      "Nous visons l'excellence dans chaque ligne de code, avec des standards de qualité élevés et des technologies de pointe.",
-  },
-  {
-    icon: Heart,
-    title: "Approche Humaine",
-    description:
-      "Derrière chaque projet, il y a des personnes. Nous privilégions la communication, l'écoute et la compréhension de vos besoins.",
+      "Une startup bien structurée avec des développeurs experts passionnés par leur métier et l'innovation technologique.",
   },
   {
     icon: Code,
-    title: "Innovation Continue",
+    title: "Expertise Technique",
     description:
-      "Nous restons à la pointe de l'innovation technologique pour vous proposer toujours les meilleures solutions possibles.",
+      "Maîtrise approfondie des technologies IA et full-stack, avec une capacité à résoudre des défis complexes et sur mesure.",
+  },
+  {
+    icon: Target,
+    title: "Solutions Sur-Mesure",
+    description:
+      "Chaque projet est unique. Nous adaptons notre approche à vos besoins spécifiques, sans solutions pré-packagées.",
   },
 ];
 
@@ -41,10 +41,9 @@ export function AboutContent() {
           </span>
         </h1>
         <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-          Maolys est une entreprise spécialisée dans le développement
-          informatique avec une forte expertise en intelligence artificielle.
-          Nous transformons vos idées en solutions concrètes qui génèrent de la
-          valeur.
+          Maolys est une startup technologique belge qui combine expertise technique 
+          et approche agile. Notre équipe de développeurs passionnés crée des solutions 
+          IA sur mesure adaptées à vos besoins spécifiques, avec rigueur et innovation.
         </p>
       </motion.div>
 
@@ -70,34 +69,34 @@ export function AboutContent() {
             <li className="flex items-start">
               <span className="text-primary mr-3">•</span>
               <span>
-                <strong className="text-foreground">Expertise IA de pointe :</strong>{" "}
-                Maîtrise des dernières technologies d'IA (GPT-4, Claude, Llama,
-                Whisper) et capacité à les intégrer dans des solutions
-                opérationnelles.
+                <strong className="text-foreground">Une équipe d'experts passionnés :</strong>{" "}
+                Nous sommes une startup bien structurée avec des développeurs de qualité 
+                qui maîtrisent les dernières technologies d'IA (GPT-4, Claude, Llama, Whisper) 
+                et les intègrent dans des solutions opérationnelles.
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-primary mr-3">•</span>
               <span>
-                <strong className="text-foreground">Développement Full-Stack :</strong>{" "}
-                Compétences complètes du front-end au back-end, permettant de
-                livrer des solutions complètes et intégrées.
+                <strong className="text-foreground">Solutions 100% sur mesure :</strong>{" "}
+                Chaque projet est unique. Nous adaptons notre expertise full-stack 
+                (front-end, back-end, IA) à vos besoins spécifiques, sans solutions pré-packagées.
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-primary mr-3">•</span>
               <span>
-                <strong className="text-foreground">Résultats Mesurables :</strong>{" "}
-                Chaque projet que nous livrons génère un ROI concret et des
-                métriques de performance claires.
+                <strong className="text-foreground">Startup agile, rigueur professionnelle :</strong>{" "}
+                Nous combinons la flexibilité d'une startup avec des standards de qualité élevés. 
+                Approche agile, communication transparente et livraisons itératives.
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-primary mr-3">•</span>
               <span>
-                <strong className="text-foreground">Conformité RGPD :</strong>{" "}
-                Toutes nos solutions respectent strictement la réglementation
-                européenne sur la protection des données.
+                <strong className="text-foreground">Expertise technique reconnue :</strong>{" "}
+                Nos projets démontrent notre capacité à livrer des solutions complexes 
+                tout en respectant la conformité RGPD et les meilleures pratiques de sécurité.
               </span>
             </li>
           </ul>
