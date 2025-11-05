@@ -56,22 +56,23 @@ function Counter({ value, suffix }: { value: string; suffix: string }) {
   // Extract number and unit from value
   const match = value.match(/(\d+(?:\.\d+)?)([KM%]*)/);
   
-  // If it's not a number, just display the text
-  if (!match) {
-    return <span>{value}{suffix}</span>;
-  }
-
-  const numStr = match[1];
-  const unit = match[2];
-  const num = parseFloat(numStr);
-
+  // Hooks must be called before any conditional returns
   const [displayValue, setDisplayValue] = React.useState(0);
 
   React.useEffect(() => {
+    // If it's not a number, don't animate
+    if (!match) {
+      return;
+    }
+
     if (!isInView) {
       setDisplayValue(0);
       return;
     }
+
+    const numStr = match[1];
+    const unit = match[2];
+    const num = parseFloat(numStr);
 
     const duration = 2000;
     const steps = 60;
@@ -90,7 +91,15 @@ function Counter({ value, suffix }: { value: string; suffix: string }) {
     }, stepDuration);
 
     return () => clearInterval(timer);
-  }, [isInView, num]);
+  }, [isInView, value]); // Use value as dependency since match is derived from it
+
+  // If it's not a number, just display the text
+  if (!match) {
+    return <span>{value}{suffix}</span>;
+  }
+
+  const numStr = match[1];
+  const unit = match[2];
 
   return (
     <span ref={ref}>
