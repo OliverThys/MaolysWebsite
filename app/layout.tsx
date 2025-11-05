@@ -12,11 +12,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Maolys - Intelligence Artificielle & Développement sur Mesure",
+    default: "Maolys - Développement Informatique & IA sur Mesure",
     template: "%s | Maolys",
   },
   description:
-    "Transformez vos processus métier avec l'intelligence artificielle. Solutions IA sur mesure, développement full-stack, et automatisation pour entreprises en Belgique.",
+    "Développement informatique sur mesure : applications web, desktop, solutions IA et automatisation. Startup belge avec expertise full-stack pour transformer vos processus métier.",
   keywords: [
     "développement IA Belgique",
     "solutions intelligence artificielle sur mesure",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     locale: "fr_BE",
     url: "https://maolys.com",
     siteName: "Maolys",
-    title: "Maolys - Intelligence Artificielle & Développement sur Mesure",
+    title: "Maolys - Développement Informatique & IA sur Mesure",
     description:
-      "Transformez vos processus métier avec l'intelligence artificielle. De l'idée à la production en quelques semaines.",
+      "Développement informatique et solutions IA sur mesure. Applications web, desktop et automatisation pour transformer vos processus métier.",
     images: [
       {
         url: "/og-image.jpg",
@@ -95,7 +95,7 @@ export default function RootLayout({
               url: "https://maolys.com",
               logo: "https://maolys.com/logo.png",
               description:
-                "Entreprise spécialisée dans le développement informatique avec une forte expertise en intelligence artificielle",
+                "Startup technologique spécialisée dans le développement informatique (applications web, desktop, full-stack) et l'intelligence artificielle",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Mons",

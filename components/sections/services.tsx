@@ -91,9 +91,9 @@ export function ServicesSection() {
             </span>
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
-            Chaque solution est développée sur mesure par notre équipe d'experts. 
-            De l'IA conversationnelle à l'automatisation complète, nous adaptons 
-            notre expertise à vos besoins uniques.
+            Développement informatique sur mesure : applications web, desktop, solutions IA et automatisation. 
+            Notre équipe d'experts full-stack adapte son expertise à vos besoins spécifiques, 
+            qu'il s'agisse de développement classique ou d'intelligence artificielle.
           </p>
         </motion.div>
 

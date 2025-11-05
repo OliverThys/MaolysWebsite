@@ -40,10 +40,10 @@ export function AboutContent() {
             Approche Humaine
           </span>
         </h1>
-        <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-          Maolys est une startup technologique belge qui combine expertise technique 
-          et approche agile. Notre équipe de développeurs passionnés crée des solutions 
-          IA sur mesure adaptées à vos besoins spécifiques, avec rigueur et innovation.
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          Maolys est une startup technologique belge spécialisée dans le développement informatique 
+          et l'intelligence artificielle. Notre équipe de développeurs experts crée des applications 
+          web, desktop et solutions IA sur mesure adaptées à vos besoins, avec rigueur et innovation.
         </p>
       </motion.div>
 
@@ -56,10 +56,10 @@ export function AboutContent() {
         <div className="bg-card border border-border rounded-2xl p-8 lg:p-12 mb-12">
           <h2 className="text-2xl font-bold mb-4">Notre Mission</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Transformer les entreprises belges et européennes en leur offrant
-            des solutions d'intelligence artificielle sur mesure qui
-            automatisent leurs processus, augmentent leur productivité et
-            créent de nouveaux avantages concurrentiels.
+            Développer des solutions informatiques sur mesure pour les entreprises belges et européennes : 
+            applications web, desktop, solutions IA et automatisation. Nous combinons développement 
+            full-stack et intelligence artificielle pour transformer vos processus et créer de nouveaux 
+            avantages concurrentiels.
           </p>
         </div>
 
@@ -70,17 +70,18 @@ export function AboutContent() {
               <span className="text-primary mr-3">•</span>
               <span>
                 <strong className="text-foreground">Une équipe d'experts passionnés :</strong>{" "}
-                Nous sommes une startup bien structurée avec des développeurs de qualité 
-                qui maîtrisent les dernières technologies d'IA (GPT-4, Claude, Llama, Whisper) 
-                et les intègrent dans des solutions opérationnelles.
+                Startup bien structurée avec des développeurs full-stack de qualité qui maîtrisent 
+                le développement web (React, Next.js, TypeScript), desktop (Tauri), backend (Python, Node.js) 
+                et les technologies IA (GPT-4, Claude, Llama, Whisper).
               </span>
             </li>
             <li className="flex items-start">
               <span className="text-primary mr-3">•</span>
               <span>
                 <strong className="text-foreground">Solutions 100% sur mesure :</strong>{" "}
-                Chaque projet est unique. Nous adaptons notre expertise full-stack 
-                (front-end, back-end, IA) à vos besoins spécifiques, sans solutions pré-packagées.
+                Chaque projet est unique. Nous développons des applications web, desktop ou solutions IA 
+                entièrement adaptées à vos besoins spécifiques, sans solutions pré-packagées. 
+                Du front-end au back-end, tout est pensé pour votre contexte métier.
               </span>
             </li>
             <li className="flex items-start">
@@ -95,7 +96,8 @@ export function AboutContent() {
               <span className="text-primary mr-3">•</span>
               <span>
                 <strong className="text-foreground">Expertise technique reconnue :</strong>{" "}
-                Nos projets démontrent notre capacité à livrer des solutions complexes 
+                Développement full-stack, applications web et desktop, intégration IA : nos projets 
+                démontrent notre capacité à livrer des solutions complexes et performantes, 
                 tout en respectant la conformité RGPD et les meilleures pratiques de sécurité.
               </span>
             </li>

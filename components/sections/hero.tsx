@@ -29,7 +29,7 @@ export function HeroSection() {
           >
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-sm text-muted-foreground">
-              Expert en Intelligence Artificielle • Mons, Belgique
+              Développement Informatique & IA • Mons, Belgique
             </span>
           </motion.div>
 
@@ -39,11 +39,11 @@ export function HeroSection() {
             transition={isMobile ? { duration: 0 } : { delay: 0.1, duration: 0.3, ease: "easeOut" }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold mb-4 sm:mb-6 leading-tight px-2 sm:px-0"
           >
-            L'Intelligence Artificielle{" "}
+            Développement Informatique{" "}
             <span className="bg-gradient-to-r from-primary via-primary to-primary/60 bg-clip-text text-transparent">
-              au Service
+              & Intelligence Artificielle
             </span>{" "}
-            de Votre Métier
+            sur Mesure
           </motion.h1>
 
           <motion.p
@@ -52,9 +52,9 @@ export function HeroSection() {
             transition={isMobile ? { duration: 0 } : { delay: 0.15, duration: 0.3, ease: "easeOut" }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 sm:mb-10 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
-            Startup technologique belge spécialisée dans le développement IA sur mesure. 
-            Nous construisons des solutions qui s'adaptent à vos besoins uniques, 
-            avec une équipe d'experts passionnés et une approche agile.
+            Startup technologique belge spécialisée dans le développement informatique et l'intelligence artificielle. 
+            Nous développons des applications web, desktop et solutions IA sur mesure qui s'adaptent à vos besoins, 
+            avec une équipe d'experts full-stack et une approche agile.
           </motion.p>
 
           <motion.div
