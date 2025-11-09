@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BASE_PATH } from "@/lib/constants";
 
 const navItems = [
   { href: "/", label: "Accueil" },
@@ -61,7 +62,7 @@ export function Navigation() {
               <div className="absolute -inset-2 bg-gradient-to-br from-primary/40 via-primary/50 to-primary/30 rounded-xl blur-lg opacity-70 group-hover:opacity-90 transition-opacity" />
               <div className="absolute inset-0 bg-white/25 backdrop-blur-sm rounded-lg border-2 border-primary/30 shadow-lg shadow-primary/20" />
               <img
-                src="/logo.png"
+                src={`${BASE_PATH}/logo.png`}
                 alt="Logo Maolys"
                 className="h-10 w-auto lg:h-12 select-none relative z-10"
                 style={{ 

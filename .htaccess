@@ -1,0 +1,44 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /maolys/
+
+  # Si on accède à /maolys/ ou /maolys, rediriger vers index.html
+  RewriteCond %{REQUEST_URI} ^/maolys/?$
+  RewriteRule ^(.*)$ index.html [L]
+
+  # Ne pas réécrire les fichiers et dossiers existants
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Ne pas réécrire les assets Next.js (_next/)
+  RewriteCond %{REQUEST_URI} !^/maolys/_next/
+  
+  # Ne pas réécrire les fichiers statiques (images, etc.)
+  RewriteCond %{REQUEST_URI} !\.(jpg|jpeg|png|gif|webp|svg|ico|css|js|woff|woff2|ttf|eot|txt|xml|html)$
+  
+  # Rediriger toutes les autres requêtes vers index.html
+  RewriteRule ^(.*)$ index.html [L]
+</IfModule>
+
+# Définir index.html comme fichier d'index par défaut
+DirectoryIndex index.html
+
+# Cache pour les assets statiques
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { BASE_PATH } from "@/lib/constants";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -82,8 +83,8 @@ export default function RootLayout({
   return (
     <html lang="fr" className={inter.variable} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/logo.png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="icon" href={`${BASE_PATH}/logo.png`} />
+        <link rel="apple-touch-icon" href={`${BASE_PATH}/logo.png`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
           type="application/ld+json"

@@ -8,6 +8,7 @@ import Image from "next/image";
 import { ProjectGallery } from "@/components/project-gallery";
 import { MonitorIcon, SmartphoneIcon } from "@/components/icons";
 import { useIsMobile } from "@/lib/mobile-detection";
+import { BASE_PATH } from "@/lib/constants";
 
 const projects = [
   {
@@ -38,8 +39,8 @@ const projects = [
       "Traitement en temps réel",
     ],
     href: "/projets/hellojade",
-    image: "/projects/hellojade.jpg",
-    images: ["/projects/hellojade.jpg", "/projects/hellojade-main.jpg"],
+    image: `${BASE_PATH}/projects/hellojade.jpg`,
+    images: [`${BASE_PATH}/projects/hellojade.jpg`, `${BASE_PATH}/projects/hellojade-main.jpg`],
     featured: true,
     isMainProject: true,
   },
@@ -49,8 +50,8 @@ const projects = [
     category: "Agent IA de Recrutement",
     description:
       "Système de recrutement automatisé via WhatsApp avec IA conversationnelle GPT-4, parsing automatique de CV et gestion multi-organisation avec isolation des données.",
-    image: "/projects/easyrecruit.jpg",
-    images: ["/projects/easyrecruit.jpg", "/projects/easyrecruit-main.jpg"],
+    image: `${BASE_PATH}/projects/easyrecruit.jpg`,
+    images: [`${BASE_PATH}/projects/easyrecruit.jpg`, `${BASE_PATH}/projects/easyrecruit-main.jpg`],
     metrics: [
       { label: "Candidats traités", value: "1000+" },
       { label: "Temps économisé", value: "80%" },
@@ -72,8 +73,8 @@ const projects = [
     category: "Gestion de Rendez-vous avec IA",
     description:
       "Système intelligent de prise de rendez-vous avec optimisation automatique des créneaux via IA conversationnelle multi-canal (WhatsApp, SMS, appels).",
-    image: "/projects/helloluna.jpg",
-    images: ["/projects/helloluna.jpg", "/projects/helloluna-main.jpg"],
+    image: `${BASE_PATH}/projects/helloluna.jpg`,
+    images: [`${BASE_PATH}/projects/helloluna.jpg`, `${BASE_PATH}/projects/helloluna-main.jpg`],
     metrics: [
       { label: "Canaux supportés", value: "3" },
       { label: "Réservations/jour", value: "200+" },
@@ -95,8 +96,8 @@ const projects = [
     category: "Projet Dev Classique - Site Vitrine",
     description:
       "Site vitrine moderne et responsive avec design Apple-style et animations fluides pour le club de basketball RBBC (Blaregnies).",
-    image: "/projects/rbbc.png",
-    images: ["/projects/rbbc.png", "/projects/rbbc-mobile.jpg"], // Desktop + Mobile
+    image: `${BASE_PATH}/projects/rbbc.png`,
+    images: [`${BASE_PATH}/projects/rbbc.png`, `${BASE_PATH}/projects/rbbc-mobile.jpg`], // Desktop + Mobile
     technologies: ["HTML5", "CSS3", "JavaScript"],
     href: "/projets/rbbc",
     featured: false,

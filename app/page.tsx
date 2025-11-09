@@ -8,17 +8,18 @@ import { ProcessSection } from "@/components/sections/process";
 import { TrustSection } from "@/components/sections/trust";
 import { CTASection } from "@/components/sections/cta";
 import { preloadImages } from "@/lib/preload-images";
+import { BASE_PATH } from "@/lib/constants";
 
 // Images des projets à précharger immédiatement
 const allProjectImages = [
-  "/projects/hellojade.jpg",
-  "/projects/hellojade-main.jpg",
-  "/projects/easyrecruit.jpg",
-  "/projects/easyrecruit-main.jpg",
-  "/projects/helloluna.jpg",
-  "/projects/helloluna-main.jpg",
-  "/projects/rbbc.png",
-  "/projects/rbbc-mobile.jpg",
+  `${BASE_PATH}/projects/hellojade.jpg`,
+  `${BASE_PATH}/projects/hellojade-main.jpg`,
+  `${BASE_PATH}/projects/easyrecruit.jpg`,
+  `${BASE_PATH}/projects/easyrecruit-main.jpg`,
+  `${BASE_PATH}/projects/helloluna.jpg`,
+  `${BASE_PATH}/projects/helloluna-main.jpg`,
+  `${BASE_PATH}/projects/rbbc.png`,
+  `${BASE_PATH}/projects/rbbc-mobile.jpg`,
 ];
 
 export default function HomePage() {

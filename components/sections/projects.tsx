@@ -7,6 +7,7 @@ import { ArrowRight, ExternalLink, Maximize2 } from "lucide-react";
 import Image from "next/image";
 import { ProjectGallery } from "@/components/project-gallery";
 import { useIsMobile } from "@/lib/mobile-detection";
+import { BASE_PATH } from "@/lib/constants";
 
 const projects = [
   {
@@ -15,14 +16,14 @@ const projects = [
     category: "Projet Phare - Système Post-Hospitalisation",
     description:
       "Application desktop innovante avec appels automatisés par IA, transcription Whisper et analyse Llama 3.1 en temps réel.",
-    image: "/projects/hellojade.jpg",
+    image: `${BASE_PATH}/projects/hellojade.jpg`,
     metrics: [
       { label: "Stack", value: "Tauri 2.0" },
       { label: "IA", value: "Whisper + Llama" },
     ],
     technologies: ["Tauri 2.0", "React 18", "TypeScript", "FastAPI", "PostgreSQL", "Docker"],
     href: "/projets/hellojade",
-    images: ["/projects/hellojade.jpg", "/projects/hellojade-main.jpg"],
+    images: [`${BASE_PATH}/projects/hellojade.jpg`, `${BASE_PATH}/projects/hellojade-main.jpg`],
     featured: true,
   },
   {
@@ -31,8 +32,8 @@ const projects = [
     category: "Side Project - Recrutement IA",
     description:
       "Agent IA de recrutement via WhatsApp avec parsing intelligent de CV et gestion multi-organisation.",
-    image: "/projects/easyrecruit.jpg",
-    images: ["/projects/easyrecruit.jpg", "/projects/easyrecruit-main.jpg"],
+    image: `${BASE_PATH}/projects/easyrecruit.jpg`,
+    images: [`${BASE_PATH}/projects/easyrecruit.jpg`, `${BASE_PATH}/projects/easyrecruit-main.jpg`],
     technologies: ["Next.js 14", "Node.js", "PostgreSQL", "Twilio", "GPT-4"],
     href: "/projets/easyrecruit",
     featured: false,
@@ -43,8 +44,8 @@ const projects = [
     category: "Side Project - Rendez-vous IA",
     description:
       "Système intelligent de prise de rendez-vous avec optimisation automatique des créneaux via IA conversationnelle multi-canal.",
-    image: "/projects/helloluna.jpg",
-    images: ["/projects/helloluna.jpg", "/projects/helloluna-main.jpg"],
+    image: `${BASE_PATH}/projects/helloluna.jpg`,
+    images: [`${BASE_PATH}/projects/helloluna.jpg`, `${BASE_PATH}/projects/helloluna-main.jpg`],
     technologies: ["Next.js 14", "Express", "GPT-4", "Twilio"],
     href: "/projets/helloluna",
     featured: false,

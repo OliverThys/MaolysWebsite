@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { MonitorIcon, SmartphoneIcon } from "@/components/icons";
+import { BASE_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "RBBC Website - Site Vitrine Club de Basket",
@@ -44,7 +45,7 @@ export default function RBBCPage() {
                 <div className="relative w-full lg:w-2/3 h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-border bg-muted/30 group">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                   <Image
-                    src="/projects/rbbc.png"
+                    src={`${BASE_PATH}/projects/rbbc.png`}
                     alt="Screenshot desktop du site RBBC"
                     fill
                     className="object-cover"
@@ -61,7 +62,7 @@ export default function RBBCPage() {
                 <div className="relative w-48 lg:w-64 h-[600px] lg:h-[700px] rounded-2xl overflow-hidden border border-border bg-muted/30 group flex-shrink-0">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                   <Image
-                    src="/projects/rbbc-mobile.jpg"
+                    src={`${BASE_PATH}/projects/rbbc-mobile.jpg`}
                     alt="Screenshot mobile du site RBBC"
                     fill
                     className="object-cover"

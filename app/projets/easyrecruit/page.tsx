@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { BASE_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "EasyRecruit - Agent IA de Recrutement via WhatsApp",
@@ -42,7 +43,7 @@ export default function EasyRecruitPage() {
             {/* Screenshot principal */}
             <div className="relative w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-border mb-12">
               <Image
-                src="/projects/easyrecruit-main.jpg"
+                src={`${BASE_PATH}/projects/easyrecruit-main.jpg`}
                 alt="Screenshot principal de EasyRecruit"
                 fill
                 className="object-cover"

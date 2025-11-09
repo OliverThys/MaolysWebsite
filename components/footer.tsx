@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Sparkles, Github, Linkedin, Mail } from "lucide-react";
+import { BASE_PATH } from "@/lib/constants";
 
 const footerLinks = {
   services: [
@@ -36,7 +37,7 @@ export function Footer() {
                 <div className="absolute -inset-2 bg-gradient-to-br from-primary/40 via-primary/50 to-primary/30 rounded-lg blur-md opacity-60" />
                 <div className="absolute inset-0 bg-white/25 backdrop-blur-sm rounded-lg border-2 border-primary/30" />
                 <img 
-                  src="/logo.png" 
+                  src={`${BASE_PATH}/logo.png`}
                   alt="Logo Maolys" 
                   className="h-8 w-auto select-none relative z-10" 
                   style={{ 

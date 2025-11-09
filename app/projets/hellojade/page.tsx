@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { BASE_PATH } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "HelloJADE - Système de Gestion Post-Hospitalisation avec IA",
@@ -43,7 +44,7 @@ export default function HelloJadePage() {
             {/* Screenshot principal */}
             <div className="relative w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden border border-border mb-12">
               <Image
-                src="/projects/hellojade-main.jpg"
+                src={`${BASE_PATH}/projects/hellojade-main.jpg`}
                 alt="Screenshot principal de HelloJADE"
                 fill
                 className="object-cover"
